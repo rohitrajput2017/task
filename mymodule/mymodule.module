@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * @file
+ * This is my module.
+ */
+use Drupal\Core\Form\FormStateInterface;
+use Symfony\Component\HttpFoundation\Request;
+
+/**
+ * Implements hook_form_alter().
+ */
+function mymodule_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
+  if ($form_id == 'system_site_information_settings') {
+    $form['actions']['submit']['#value'] = 'Update configuration';
+    //$form['actions']['submit']['#submit'][] = 'rohit_custom_site_information';
+  }
+}
+
+/**
+ * Make the submit form.
+ */
+function rohit_custom_site_information(array $form, FormStateInterface $form_state) {
+  //die("I'm not getting run, why :(");
+  // drupal_set_message("The Site API key has been saved with that value.");
+}

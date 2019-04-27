@@ -1,0 +1,4 @@
+name: Rohit custom module
+type: module
+description: Defines a custom module.
+core: 8.x

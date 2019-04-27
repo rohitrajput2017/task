@@ -1,0 +1,19 @@
+# If the user accesses
+# http://example.com/?q=examples/page-example/arguments/1/2, the routing system
+# will first look for examples/page-example/arguments/1/2. Not finding a match,
+# it will look for examples/page-example/arguments/1/{*}. Again not finding a
+# match, it will look for examples/page-example/arguments/{*}/2. Yet again not
+# finding a match, it will look for examples/page-example/arguments/{*}/{*}.
+# This time it finds a match, and so it will execute the _controller callback.
+# In this case, it's PageExampleController::arguments().
+
+# Since the parameters are passed to the function after the match, the function
+# can do additional checking or make use of them before executing the callback
+# function. The placeholder names "first" and "second" are arbitrary but must
+# match the variable names in the callback method, e.g. "$first" and "$second".
+hello.arguments:
+  path: '/page_json/{first}/{second}'
+  defaults:
+    _controller: '\Drupal\hello\Controller\HelloController::arguments'
+  requirements:
+    _permission: 'access arguments page'
